@@ -1,4 +1,3 @@
-// ==== GLOBAL VARIABLES ====
 let isLoading = true;
 let currentFilter = '*';
 let typedTextSpan = null;
@@ -7,51 +6,40 @@ let textArray = ["Web Developer", "Sketch Artist", "Computer Engineering Student
 let textArrayIndex = 0;
 let charIndex = 0;
 
-// ==== DOM CONTENT LOADED ====
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
 
-// ==== INITIALIZE APPLICATION ====
 function initializeApp() {
-    // Initialize preloader
     handlePreloader();
     
-    // Initialize navigation
     initializeNavigation();
     
-    // Initialize typing animation
     initializeTypingAnimation();
     
-    // Initialize AOS (Animate On Scroll)
     initializeAOS();
     
-    // Initialize portfolio filters
     initializePortfolioFilters();
-    
-    // Initialize lightbox
+
     initializeLightbox();
-    
-    // Initialize contact form
+  
     initializeContactForm();
     
-    // Initialize back to top button
     initializeBackToTop();
     
-    // Initialize skill bars
     initializeSkillBars();
     
-    // Initialize smooth scrolling
+    
     initializeSmoothScrolling();
     
-    // Initialize particle effects
+    
     initializeParticleEffects();
     
-    // Initialize loading animations
+    
     initializeLoadingAnimations();
 }
 
-// ==== PRELOADER ====
+
 function handlePreloader() {
     window.addEventListener('load', function() {
         setTimeout(function() {
@@ -64,16 +52,16 @@ function handlePreloader() {
                     document.body.style.overflow = 'visible';
                 }, 500);
             }
-        }, 1500); // Show preloader for at least 1.5 seconds
+        }, 1500); 
     });
 }
 
-// ==== NAVIGATION ====
+
 function initializeNavigation() {
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     
-    // Navbar scroll effect
+
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -82,7 +70,7 @@ function initializeNavigation() {
         }
     });
     
-    // Active link highlighting
+    
     window.addEventListener('scroll', function() {
         let current = '';
         const sections = document.querySelectorAll('section');
@@ -103,7 +91,7 @@ function initializeNavigation() {
         });
     });
     
-    // Mobile menu close on link click
+    
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             const navbarCollapse = document.getElementById('navbarNav');
@@ -115,7 +103,7 @@ function initializeNavigation() {
     });
 }
 
-// ==== TYPING ANIMATION ====
+
 function initializeTypingAnimation() {
     typedTextSpan = document.querySelector(".typed-text");
     cursorSpan = document.querySelector(".cursor");
@@ -156,8 +144,6 @@ function eraseText() {
         setTimeout(typeText, 1000);
     }
 }
-
-// ==== AOS INITIALIZATION ====
 function initializeAOS() {
     if (typeof AOS !== 'undefined') {
         AOS.init({
@@ -170,7 +156,7 @@ function initializeAOS() {
     }
 }
 
-// ==== PORTFOLIO FILTERS ====
+
 function initializePortfolioFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
@@ -179,11 +165,11 @@ function initializePortfolioFilters() {
         btn.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
             
-            // Update active filter button
+
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             
-            // Filter portfolio items
+            
             portfolioItems.forEach(item => {
                 const category = item.getAttribute('data-category');
                 
@@ -201,7 +187,6 @@ function initializePortfolioFilters() {
     });
 }
 
-// ==== LIGHTBOX ====
 function initializeLightbox() {
     const lightbox = document.getElementById('lightbox');
     const lightboxClose = document.querySelector('.lightbox-close');
@@ -218,7 +203,6 @@ function initializeLightbox() {
         });
     }
     
-    // ESC key to close lightbox
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && lightbox && lightbox.style.display === 'block') {
             closeLightbox();
@@ -240,7 +224,7 @@ function openLightbox(imageSrc, title, date) {
         lightbox.style.display = 'block';
         document.body.style.overflow = 'hidden';
         
-        // Animate in
+       
         setTimeout(() => {
             lightbox.style.opacity = '1';
         }, 10);
@@ -258,7 +242,6 @@ function closeLightbox() {
     }
 }
 
-// ==== CONTACT FORM ====
 function initializeContactForm() {
     const contactForm = document.getElementById('contactForm');
     
@@ -266,14 +249,14 @@ function initializeContactForm() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
+      
             const formData = new FormData(this);
             const name = formData.get('name');
             const email = formData.get('email');
             const subject = formData.get('subject');
             const message = formData.get('message');
             
-            // Basic validation
+            
             if (!name || !email || !subject || !message) {
                 showNotification('Please fill in all fields.', 'error');
                 return;
@@ -284,18 +267,16 @@ function initializeContactForm() {
                 return;
             }
             
-            // Show loading state
+            
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
             submitBtn.disabled = true;
             
-            // Simulate form submission (replace with actual form submission logic)
             setTimeout(() => {
                 showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
                 this.reset();
                 
-                // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }, 2000);
@@ -309,7 +290,6 @@ function isValidEmail(email) {
 }
 
 function showNotification(message, type) {
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
@@ -319,7 +299,6 @@ function showNotification(message, type) {
         </div>
     `;
     
-    // Add styles
     Object.assign(notification.style, {
         position: 'fixed',
         top: '20px',
@@ -337,13 +316,11 @@ function showNotification(message, type) {
     
     document.body.appendChild(notification);
     
-    // Animate in
     setTimeout(() => {
         notification.style.opacity = '1';
         notification.style.transform = 'translateX(0)';
     }, 10);
     
-    // Remove after 5 seconds
     setTimeout(() => {
         notification.style.opacity = '0';
         notification.style.transform = 'translateX(100px)';
@@ -355,7 +332,6 @@ function showNotification(message, type) {
     }, 5000);
 }
 
-// ==== BACK TO TOP BUTTON ====
 function initializeBackToTop() {
     const backToTop = document.getElementById('backToTop');
     
@@ -377,7 +353,6 @@ function initializeBackToTop() {
     }
 }
 
-// ==== SKILL BARS ANIMATION ====
 function initializeSkillBars() {
     const observeSkillBars = () => {
         const skillBars = document.querySelectorAll('.skill-progress');
@@ -399,7 +374,6 @@ function initializeSkillBars() {
         skillBars.forEach(bar => observer.observe(bar));
     };
     
-    // Initialize observer when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', observeSkillBars);
     } else {
@@ -407,7 +381,6 @@ function initializeSkillBars() {
     }
 }
 
-// ==== SMOOTH SCROLLING ====
 function initializeSmoothScrolling() {
     const links = document.querySelectorAll('a[href^="#"]');
     
@@ -419,7 +392,7 @@ function initializeSmoothScrolling() {
             const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+                const offsetTop = targetElement.offsetTop - 80; 
                 
                 window.scrollTo({
                     top: offsetTop,
@@ -430,12 +403,10 @@ function initializeSmoothScrolling() {
     });
 }
 
-// ==== PARTICLE EFFECTS ====
 function initializeParticleEffects() {
     const particleContainer = document.querySelector('.hero-particles');
     
     if (particleContainer) {
-        // Add mouse interaction to particles
         document.addEventListener('mousemove', function(e) {
             const mouseX = e.clientX / window.innerWidth;
             const mouseY = e.clientY / window.innerHeight;
@@ -445,9 +416,8 @@ function initializeParticleEffects() {
     }
 }
 
-// ==== LOADING ANIMATIONS ====
 function initializeLoadingAnimations() {
-    // Animate elements when they come into view
+
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('[data-aos]');
         
@@ -462,16 +432,14 @@ function initializeLoadingAnimations() {
     };
     
     window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Run once on load
+    animateOnScroll(); 
 }
 
-// ==== COMMISSION MODAL ====
 function showCommissionModal() {
     const modal = new bootstrap.Modal(document.getElementById('commissionModal'));
     modal.show();
 }
 
-// ==== PERFORMANCE OPTIMIZATIONS ====
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -497,7 +465,6 @@ function throttle(func, limit) {
     }
 }
 
-// ==== LAZY LOADING FOR IMAGES ====
 function initializeLazyLoading() {
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -516,7 +483,6 @@ function initializeLazyLoading() {
     }
 }
 
-// ==== VIEWPORT HEIGHT FIX FOR MOBILE ====
 function setViewportHeight() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -525,50 +491,42 @@ function setViewportHeight() {
 window.addEventListener('resize', debounce(setViewportHeight, 100));
 setViewportHeight();
 
-// ==== KEYBOARD NAVIGATION ====
 function initializeKeyboardNavigation() {
     document.addEventListener('keydown', function(e) {
-        // ESC key actions
+        
         if (e.key === 'Escape') {
-            // Close any open modals
             const openModals = document.querySelectorAll('.modal.show');
             openModals.forEach(modal => {
                 const bsModal = bootstrap.Modal.getInstance(modal);
                 if (bsModal) bsModal.hide();
             });
             
-            // Close lightbox
             if (document.getElementById('lightbox').style.display === 'block') {
                 closeLightbox();
             }
         }
         
-        // Tab navigation enhancement
         if (e.key === 'Tab') {
             document.body.classList.add('keyboard-navigation');
         }
     });
-    
-    // Remove keyboard navigation class on mouse use
     document.addEventListener('mousedown', function() {
         document.body.classList.remove('keyboard-navigation');
     });
 }
 
-// ==== ERROR HANDLING ====
 window.addEventListener('error', function(e) {
     console.error('Portfolio Error:', e.error);
-    // You could send error reports to a logging service here
+
 });
 
 window.addEventListener('unhandledrejection', function(e) {
     console.error('Unhandled Promise Rejection:', e.reason);
-    // Handle unhandled promise rejections
+
 });
 
-// ==== ACCESSIBILITY IMPROVEMENTS ====
 function initializeAccessibility() {
-    // Add skip link
+
     const skipLink = document.createElement('a');
     skipLink.href = '#main-content';
     skipLink.textContent = 'Skip to main content';
@@ -596,7 +554,6 @@ function initializeAccessibility() {
     
     document.body.insertBefore(skipLink, document.body.firstChild);
     
-    // Improve focus visibility
     const style = document.createElement('style');
     style.textContent = `
         .keyboard-navigation *:focus {
@@ -607,9 +564,9 @@ function initializeAccessibility() {
     document.head.appendChild(style);
 }
 
-// ==== ANALYTICS TRACKING (Optional) ====
+
 function trackEvent(category, action, label) {
-    // Example: Google Analytics tracking
+
     if (typeof gtag !== 'undefined') {
         gtag('event', action, {
             event_category: category,
@@ -620,7 +577,7 @@ function trackEvent(category, action, label) {
     console.log(`Event tracked: ${category} - ${action} - ${label}`);
 }
 
-// ==== SERVICE WORKER REGISTRATION (Optional) ====
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/sw.js')
@@ -633,30 +590,27 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// ==== FINAL INITIALIZATION ====
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeKeyboardNavigation();
     initializeAccessibility();
     initializeLazyLoading();
     
-    // Track page load
     trackEvent('Page', 'Load', 'Portfolio');
 });
 
-// ==== PROGRESSIVE WEB APP FEATURES ====
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
-    // Stash the event so it can be triggered later
+
     deferredPrompt = e;
-    // Update UI notify the user they can install the PWA
+  
     showInstallPromotion();
 });
 
 function showInstallPromotion() {
-    // Show install button or banner
+    
     const installBanner = document.createElement('div');
     installBanner.innerHTML = `
         <div class="install-banner" style="
@@ -698,8 +652,7 @@ function showInstallPromotion() {
     document.getElementById('dismissBtn').addEventListener('click', () => {
         installBanner.remove();
     });
-    
-    // Auto dismiss after 10 seconds
+   
     setTimeout(() => {
         if (installBanner.parentNode) {
             installBanner.remove();
@@ -707,7 +660,6 @@ function showInstallPromotion() {
     }, 10000);
 }
 
-// ==== EXPORT FUNCTIONS FOR GLOBAL ACCESS ====
 window.portfolioFunctions = {
     openLightbox,
     closeLightbox,
