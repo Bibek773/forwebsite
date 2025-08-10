@@ -4,307 +4,40 @@
   <meta charset="utf-8">
   <title>Bibek Ghimire - Developer & Artist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Computer Engineering Student, Web Developer, and Sketch Artist from Lalitpur, Nepal">
+  <meta name="keywords" content="web developer, sketch artist, computer engineering, portfolio, nepal">
+  
+  <!-- External Libraries -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #2c3e50;
-      --secondary: #3498db;
-      --accent: #e74c3c;
-      --text: #2c3e50;
-      --light-bg: #ecf0f1;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      line-height: 1.6; 
-      color: var(--text);
-    }
-
-    .navbar {
-      background: rgba(44, 62, 80, 0.95) !important;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-
-    .navbar-brand { 
-      font-weight: bold; 
-      font-size: 1.5rem; 
-      color: white !important;
-    }
-
-    .nav-link { 
-      color: rgba(255,255,255,0.8) !important; 
-      transition: color 0.3s ease;
-    }
-    .nav-link:hover { color: var(--secondary) !important; }
-
-    .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(39, 42, 44, 0.7)), url('img/intro-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.3);
-      z-index: 1;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-100px); }
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      animation: fadeInUp 1s ease-out;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      opacity: 0.9;
-      animation: fadeInUp 1s ease-out 0.3s both;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .section {
-      padding: 5rem 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-      font-size: 2.5rem;
-      color: var(--primary);
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 3px;
-      background: var(--secondary);
-      margin: 1rem auto;
-    }
-
-    .skill-item {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .skill-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
-    .skill-bar {
-      background: var(--light-bg);
-      border-radius: 10px;
-      overflow: hidden;
-      height: 10px;
-      margin-top: 0.5rem;
-    }
-
-    .skill-progress {
-      height: 100%;
-      background: linear-gradient(90deg, var(--secondary), var(--accent));
-      border-radius: 10px;
-      transition: width 2s ease;
-      animation: slideIn 2s ease-out;
-    }
-
-    @keyframes slideIn {
-      from { width: 0; }
-    }
-
-    .service-card {
-      background: white;
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      height: 100%;
-    }
-
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-    }
-
-    .service-icon {
-      font-size: 3rem;
-      color: var(--secondary);
-      margin-bottom: 1rem;
-    }
-
-    .portfolio-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 10px;
-      margin-bottom: 2rem;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .portfolio-item:hover {
-      transform: scale(1.05);
-    }
-
-    .portfolio-item img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .portfolio-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(52, 152, 219, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      color: white;
-      text-align: center;
-    }
-
-    .portfolio-item:hover .portfolio-overlay {
-      opacity: 1;
-    }
-
-    .btn-primary {
-      background: var(--secondary);
-      border: none;
-      padding: 0.8rem 2rem;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    .contact {
-      background: var(--light-bg);
-    }
-
-    .social-links a {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      background: var(--secondary);
-      color: white;
-      text-align: center;
-      line-height: 50px;
-      border-radius: 50%;
-      margin: 0 0.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .social-links a:hover {
-      background: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .alert-dev {
-      background: #fff3cd;
-      border: 1px solid #ffeaa7;
-      color: #856404;
-      padding: 1rem;
-      border-radius: 5px;
-      margin: 1rem 0;
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .hero p { font-size: 1.1rem; }
-      .section { padding: 3rem 0; }
-    }
-
-    .lightbox {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
-}
-
-.lightbox-content {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 80vh;
-  animation: zoom 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-@keyframes zoom {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.close {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: #ccc;
-}
-  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  
+  
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar">
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
 
+  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
     <div class="container">
-      <a class="navbar-brand" href="#home">Bibek Ghimire</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="#home">
+        <i class="fas fa-code"></i>
+        Bibek Ghimire
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -318,120 +51,165 @@
       </div>
     </div>
   </nav>
+
+  <!-- Hero Section -->
   <section id="home" class="hero">
+    <div class="hero-particles"></div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h1>I am Bibek Ghimire</h1>
-          <p>Computer Engineering Student | Web Developer | Sketch Artist</p>
+        <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+          <div class="hero-content">
+            <img src="img/intro.jpg" alt="Bibek Ghimire" class="hero-profile-img mb-4" data-aos="zoom-in" data-aos-delay="200">
+            <h1 class="hero-title">I am Bibek Ghimire</h1>
+            <div class="typing-container">
+              <span class="typed-text"></span>
+              <span class="cursor">&nbsp;</span>
+            </div>
+            <p class="hero-subtitle mt-3">Crafting digital experiences and realistic portraits</p>
+            <div class="hero-buttons mt-4">
+              <a href="#portfolio" class="btn btn-primary btn-lg me-3">View My Work</a>
+              <a href="#contact" class="btn btn-outline-light btn-lg">Get In Touch</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="scroll-indicator">
+      <a href="#about">
+        <i class="fas fa-chevron-down"></i>
+      </a>
+    </div>
   </section>
 
+  <!-- About Section -->
   <section id="about" class="section">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
+      <h2 class="section-title" data-aos="fade-up">About Me</h2>
       <div class="row align-items-center">
-        <div class="col-lg-4 mb-4">
-          <img src="img/bg.jpg" alt="Bibek Ghimire" class="img-fluid rounded shadow">
-        </div>
-        <div class="col-lg-8">
-          <div class="mb-4">
-            <h4>Developer & Artist</h4>
-            <p class="lead">Hi! I'm currently pursuing a Bachelor's degree in Computer Engineering. I'm passionate about coding and creating realistic pencil portraits. I love balancing the logical world of programming with the expressive art of sketching.</p>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <p><strong>Name:</strong> Bibek Ghimire</p>
-              <p><strong>Email:</strong> bibekghimire773@gmail.com</p>
+        <div class="col-lg-5 mb-4" data-aos="fade-right">
+          <div class="about-image-container">
+            <img src="img/bg.jpg" alt="Bibek Ghimire" class="img-fluid rounded shadow about-image">
+            <div class="image-overlay">
+              <div class="overlay-content">
+                <i class="fas fa-eye fa-2x"></i>
+                <p>Passionate Developer</p>
+              </div>
             </div>
-            <div class="col-md-6">
-              <p><strong>Phone:</strong> +977 9744323702</p>
-              <p><strong>Location:</strong> Lalitpur, Nepal</p>
+          </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="about-content">
+            <h3 class="mb-3">Developer & Artist</h3>
+            <p class="lead">Hi! I'm currently pursuing a Bachelor's degree in Computer Engineering. I'm passionate about coding and creating realistic pencil portraits. I love balancing the logical world of programming with the expressive art of sketching.</p>
+            <p>My journey combines technical expertise with creative expression, allowing me to approach problems from both analytical and artistic perspectives.</p>
+            
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <div class="info-item">
+                  <i class="fas fa-user"></i>
+                  <span><strong>Name:</strong> Bibek Ghimire</span>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-envelope"></i>
+                  <span><strong>Email:</strong> bibekghimire773@gmail.com</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-item">
+                  <i class="fas fa-phone"></i>
+                  <span><strong>Phone:</strong> +977 9744323702</span>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span><strong>Location:</strong> Lalitpur, Nepal</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <a href="resume.pdf" class="btn btn-primary" target="_blank">
+                <i class="fas fa-download me-2"></i>Download Resume
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row mt-5">
-        <div class="col-12">
-          <h4 class="mb-4">Technical Skills</h4>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="skill-item">
-            <div class="d-flex justify-content-between">
-              <span>C/C++</span>
-              <span>85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 85%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="skill-item">
-            <div class="d-flex justify-content-between">
-              <span>Java</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="skill-item">
-            <div class="d-flex justify-content-between">
-              <span>Python</span>
-              <span>75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 75%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="skill-item">
-            <div class="d-flex justify-content-between">
-              <span>C#</span>
-              <span>70%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 70%"></div>
+      <!-- Skills Section -->
+      <div class="skills-section mt-5" data-aos="fade-up">
+        <h3 class="text-center mb-4">Technical Skills & Expertise</h3>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="skill-category">
+              <h5><i class="fas fa-code"></i> Programming Languages</h5>
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span>C/C++</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span>Java</span>
+                  <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span>Python</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span>C#</span>
+                  <span class="skill-percentage">70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="70%"></div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="skill-item">
-            <div class="d-flex justify-content-between">
-              <span>HTML/CSS</span>
-              <span>85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 85%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="skill-item">
-            <div class="d-flex justify-content-between">
-              <span>DBMS</span>
-              <span>75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 75%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="skill-item">
-            <div class="d-flex justify-content-between">
-              <span>Pencil Sketch</span>
-              <span>90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 90%"></div>
+          <div class="col-lg-6">
+            <div class="skill-category">
+              <h5><i class="fas fa-palette"></i> Design & Development</h5>
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span>HTML/CSS</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span>Database Management</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span>Pencil Sketching</span>
+                  <span class="skill-percentage">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90%"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -439,23 +217,62 @@
     </div>
   </section>
 
-  <section id="services" class="section" style="background: var(--light-bg);">
+  <!-- Services Section -->
+  <section id="services" class="section services-section">
     <div class="container">
-      <h2 class="section-title">Services</h2>
+      <h2 class="section-title" data-aos="fade-up">Services</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">What I can do for you</p>
+      
       <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
-          <div class="service-card">
-            <i class="fas fa-pencil-alt service-icon"></i>
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-card h-100">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h4>Web Development</h4>
+            <p>Creating responsive and dynamic web applications using modern technologies and best practices.</p>
+            <ul class="service-features">
+              <li>Responsive Design</li>
+              <li>Modern Frameworks</li>
+              <li>Database Integration</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-card h-100">
+            <div class="service-icon">
+              <i class="fas fa-pencil-alt"></i>
+            </div>
             <h4>Pencil Sketch Portraits</h4>
             <p>Bringing life to paper with realistic and expressive pencil drawings. Commission your unique piece today!</p>
-            
-            <div class="alert-dev">
-              <i class="fas fa-tools"></i> This feature is currently under development. Please check back soon!
+            <ul class="service-features">
+              <li>Realistic Portraits</li>
+              <li>Custom Commissions</li>
+              <li>High Quality Paper</li>
+            </ul>
+            <div class="service-price">
+              <span class="price">Rs 3,500/-</span>
+              <span class="price-note">Starting Price</span>
             </div>
-            
-            <button type="button" class="btn btn-primary" onclick="showDevAlert()">
-              Commission Sketch - Rs 3500/-
+            <button type="button" class="btn btn-primary mt-3" onclick="showCommissionModal()">
+              Commission Sketch
             </button>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-card h-100">
+            <div class="service-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h4>Mobile Development</h4>
+            <p>Building cross-platform mobile applications with intuitive user interfaces and smooth performance.</p>
+            <ul class="service-features">
+              <li>Cross-Platform Apps</li>
+              <li>User-Friendly UI</li>
+              <li>Performance Optimized</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -464,112 +281,216 @@
 
   <section id="portfolio" class="section">
     <div class="container">
-      <h2 class="section-title">Featured Sketches</h2>
-      <p class="text-center mb-5">Discover the artistry behind meticulously crafted pencil sketches</p>
+        <h2 class="section-title" data-aos="fade-up">Featured Work</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Discover the artistry behind meticulously crafted pencil sketches</p>
+        
+        <!-- Filter Buttons -->
+        <div class="portfolio-filters text-center mb-5" data-aos="fade-up" data-aos-delay="200">
+            <button class="filter-btn active" data-filter="*">Sketches</button>
+            <!-- <button class="filter-btn" data-filter="">Portraits</button>
+            <button class="filter-btn" data-filter="celebrities">Celebrities</button>
+            <button class="filter-btn" data-filter="personal">Personal</button> -->
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="celebrities" data-aos="fade-up" data-aos-delay="200">
+                <div class="portfolio-card">
+                    <img src="img/work-1.jpg" alt="Acharya Rajneesh" >
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <h5>Acharya Rajneesh (OSHO)</h5>
+                            <p>Oct 2024</p>
+                            <div class="portfolio-buttons">
+                                <button class="btn-view" onclick="openLightbox('img/work-1.jpg', 'Acharya Rajneesh (OSHO)', 'Oct 2024')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="portraits" data-aos="fade-up" data-aos-delay="300">
+              <div class="portfolio-card">
+                <img src="img/work-2.jpg" alt="Yamuna Ghimire" >
+                <div class="portfolio-overlay">
+                  <div class="portfolio-content">
+                    <h5>Yamuna Ghimire</h5>
+                    <p>Dec 2023</p>
+                    <div class="portfolio-buttons">
+                      <button class="btn-view" onclick="openLightbox('img/work-2.jpg', 'Yamuna Ghimire', 'Dec 2023')">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="portfolio-item" data-category="personal" data-aos="fade-up" data-aos-delay="400">
+                <div class="portfolio-card">
+                    <img src="img/work-3.jpg" alt="Self Portrait">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <h5>Self Portrait</h5>
+                            <p>Jan 2023</p>
+                            <div class="portfolio-buttons">
+                                <button class="btn-view" onclick="openLightbox('img/work-3.jpg', 'Self Portrait', 'Jan 2023')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="portraits" data-aos="fade-up" data-aos-delay="500">
+                <div class="portfolio-card">
+                    <img src="img/work-4.jpg" alt="Himal-Saru">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <h5>Himal-Saru</h5>
+                            <p>Dec 2023</p>
+                            <div class="portfolio-buttons">
+                                <button class="btn-view" onclick="openLightbox('img/work-4.jpg', 'Himal-Saru', 'Dec 2023')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="celebrities" data-aos="fade-up" data-aos-delay="600">
+                <div class="portfolio-card">
+                    <img src="img/work-5.jpg" alt="Allu Arjun">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <h5>Puspa Raj (Allu Arjun)</h5>
+                            <p>Feb 2022</p>
+                            <div class="portfolio-buttons">
+                                <button class="btn-view" onclick="openLightbox('img/work-5.jpg', 'Puspa Raj (Allu Arjun)', 'Feb 2022')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="celebrities" data-aos="fade-up" data-aos-delay="700">
+                <div class="portfolio-card">
+                    <img src="img/work-6.jpg" alt="King Birendra">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <h5>King Birendra</h5>
+                            <p>May 2023</p>
+                            <div class="portfolio-buttons">
+                                <button class="btn-view" onclick="openLightbox('img/work-6.jpg', 'King Birendra', 'May 2023')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-container">
+        <img id="lightbox-img" class="lightbox-content" src="" alt="">
+        <div class="lightbox-info">
+            <h4 id="lightbox-title"></h4>
+            <p id="lightbox-date"></p>
+        </div>
+    </div>
+</div>
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2 class="section-title text-white" data-aos="fade-up">Get In Touch</h2>
+      <p class="section-subtitle text-light" data-aos="fade-up" data-aos-delay="100">Let's work together to bring your ideas to life</p>
       
-      <div class="row">
-        <div class="col-lg-4 col-md-6">
-          <div class="portfolio-item">
-            <img src="img/work-1.jpg" alt="Acharya Rajneesh" data-title="Acharya Rajneesh (OSHO)" data-date="Oct 2024">
-            <div class="portfolio-overlay">
-              <div>
-                <h5>Acharya Rajneesh (OSHO)</h5>
-                <p>Oct 2024</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="portfolio-item">
-            <img src="img/work-2.jpg" alt="Yamuna Ghimire" data-title="Yamuna Ghimire" data-date="Dec 2023">
-            <div class="portfolio-overlay">
-              <div>
-                <h5>Yamuna Ghimire</h5>
-                <p>Dec 2023</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="portfolio-item">
-            <img src="img/work-3.jpg" alt="Self Portrait" data-title="Self Portrait" data-date="Jan 2023">
-            <div class="portfolio-overlay">
-              <div>
-                <h5>Self Portrait</h5>
-                <p>Jan 2023</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="portfolio-item">
-            <img src="img/work-4.jpg" alt="Himal-Saru" data-title="Himal-Saru" data-date="Dec 2023">
-            <div class="portfolio-overlay">
-              <div>
-                <h5>Himal-Saru</h5>
-                <p>Dec 2023</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="portfolio-item">
-            <img src="img/work-5.jpg" alt="Allu Arjun" data-title="Puspa Raj (Allu Arjun)" data-date="Feb 2022">
-            <div class="portfolio-overlay">
-              <div>
-                <h5>Puspa Raj (Allu Arjun)</h5>
-                <p>Feb 2022</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="portfolio-item">
-            <img src="img/work-6.jpg" alt="King Birendra" data-title="King Birendra" data-date="May 2023">
-            <div class="portfolio-overlay">
-              <div>
-                <h5>King Birendra</h5>
-                <p>May 2023</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section contact">
-    <div class="container">
-      <h2 class="section-title">Get In Touch</h2>
       <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="text-center">
-            <p class="lead mb-4">I'd love to hear from you! Whether you have questions about my work or want to discuss a potential collaboration.</p>
-            
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <i class="fas fa-map-marker-alt fa-2x text-primary mb-2"></i>
-                <h5>Location</h5>
-                <p>Lalitpur, Nepal</p>
-              </div>
-              <div class="col-md-4 mb-3">
-                <i class="fas fa-phone fa-2x text-primary mb-2"></i>
-                <h5>Phone</h5>
-                <p>+977 9744323702</p>
-              </div>
-              <div class="col-md-4 mb-3">
-                <i class="fas fa-envelope fa-2x text-primary mb-2"></i>
-                <h5>Email</h5>
-                <p>bibekghimire773@gmail.com</p>
+        <div class="col-lg-10">
+          <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-right">
+              <div class="contact-info">
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="contact-details">
+                    <h5>Location</h5>
+                    <p>Lalitpur, Nepal</p>
+                  </div>
+                </div>
+                
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                  </div>
+                  <div class="contact-details">
+                    <h5>Phone</h5>
+                    <p>+977 9744323702</p>
+                  </div>
+                </div>
+                
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div class="contact-details">
+                    <h5>Email</h5>
+                    <p>bibekghimire773@gmail.com</p>
+                  </div>
+                </div>
+                
+                <div class="social-links mt-4">
+                  <a href="https://www.facebook.com/mr.bibek0" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="https://www.instagram.com/bibek5508" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/bibek-ghimire-1952292b1/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                  <a href="https://wa.me/qr/7WLA5X64XXNLC1" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                  <a href="https://github.com/bibek773" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
               </div>
             </div>
             
-            <div class="social-links mt-4">
-              <a href="https://www.facebook.com/mr.bibek0" target="_blank"><i class="fab fa-facebook-f"></i></a>
-              <a href="https://www.instagram.com/bibek5508" target="_blank"><i class="fab fa-instagram"></i></a>
-              <a href="https://www.linkedin.com/in/bibek-ghimire-1952292b1/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-              <a href="https://wa.me/qr/7WLA5X64XXNLC1" target="_blank"><i class="fab fa-whatsapp"></i></a>
-              <a href="https://github.com/bibek773" target="_blank"><i class="fab fa-github"></i></a>
+            <div class="col-lg-6" data-aos="fade-left">
+              <form class="contact-form" id="contactForm">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                </div>
+                <div class="mb-3">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  <i class="fas fa-paper-plane me-2"></i>Send Message
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -577,117 +498,140 @@
     </div>
   </section>
 
-  <footer class="text-center py-4" style="background: var(--primary); color: white;">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
-      <p>&copy; 2024 Bibek Ghimire. All rights reserved.</p>
+      <div class="footer-content text-center">
+        <p>&copy; 2024 Bibek Ghimire. All rights reserved.</p>
+        <p class="footer-note">Made with <i class="fas fa-heart text-danger"></i> in Nepal</p>
+      </div>
     </div>
   </footer>
 
-  <div id="lightbox" class="lightbox">
-    <span class="close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" alt="">
-    <div class="lightbox-info" id="lightbox-info">
-      <h5 id="lightbox-title">Title</h5>
-      <p id="lightbox-date">Date</p>
+
+  <!-- Commission Modal -->
+  <div class="modal fade" id="commissionModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background-color: white; color: #333;">
+        <div class="modal-header" style="background-color: #f8f9fa; border-bottom: 1px solid #dee2e6;">
+          <h5 class="modal-title" style="color: #333; font-weight: 600;">Commission a Sketch</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" style="background-color: white; color: #333; padding: 2rem;">
+          <p style="color: #333; margin-bottom: 1rem; font-size: 1.1rem;">Thank you for your interest in commissioning a sketch!</p>
+          <p style="color: #666; margin-bottom: 1.5rem;">Please contact me directly to discuss your requirements:</p>
+          <div class="commission-options" style="text-align: center;">
+            <a href="tel:+9779744323702" class="btn btn-outline-primary me-2" style="border-color: #007bff; color: #007bff;">
+              <i class="fas fa-phone"></i> Call Now
+            </a>
+            <a href="mailto:bibekghimire773@gmail.com" class="btn btn-outline-primary" style="border-color: #007bff; color: #007bff;">
+              <i class="fas fa-envelope"></i> Send Email
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- Back to Top -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Scripts -->
+
+  <script src="script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-  
-  <script>
-    function showDevAlert() {
-      alert('🚧 Feature Under Development\n\nThe commission sketch feature is currently being developed. Please contact me directly via phone or email for sketch commissions. Thank you for your understanding!');
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(44, 62, 80, 0.98)';
-      } else {
-        navbar.style.background = 'rgba(44, 62, 80, 0.95)';
-      }
-    });
-
-    const observerOptions = {
-      threshold: 0.5,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const progressBars = entry.target.querySelectorAll('.skill-progress');
-          progressBars.forEach(bar => {
-            bar.style.animation = 'none';
-            bar.offsetHeight;
-            bar.style.animation = 'slideIn 2s ease-out';
-          });
-        }
-      });
-    }, observerOptions);
-
-    const skillsSection = document.querySelector('#about');
-    if (skillsSection) observer.observe(skillsSection);
-
-    const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeBtn = document.querySelector('.close');
-
-document.querySelectorAll('.portfolio-item img').forEach(img => {
-  img.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-
-    lightbox.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    
-    setTimeout(() => {
-      lightbox.style.opacity = '1';
-    }, 10);
-  });
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+// Initialize AOS
+AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false,
+    offset: 100
 });
 
-function closeLightbox() {
-  lightbox.style.opacity = '0';
-  setTimeout(() => {
-    lightbox.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }, 200);
+// Portfolio Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active filter button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter portfolio items
+            portfolioItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                
+                if (filter === '*' || category === filter) {
+                    item.classList.remove('hidden');
+                    item.style.display = 'block';
+                } else {
+                    item.classList.add('hidden');
+                    setTimeout(() => {
+                        if (item.classList.contains('hidden')) {
+                            item.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            });
+        });
+    });
+});
+
+// Lightbox Functions
+function openLightbox(imageSrc, title, date) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDate = document.getElementById('lightbox-date');
+    
+    if (lightbox && lightboxImg && lightboxTitle && lightboxDate) {
+        lightboxImg.src = imageSrc;
+        lightboxImg.alt = title;
+        lightboxTitle.textContent = title;
+        lightboxDate.textContent = date;
+        lightbox.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Animate in
+        setTimeout(() => {
+            lightbox.classList.add('show');
+        }, 10);
+    }
 }
 
-closeBtn.addEventListener('click', closeLightbox);
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.classList.remove('show');
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+}
 
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) {
-    closeLightbox();
-  }
+// Close lightbox on outside click
+document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeLightbox();
+    }
 });
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && lightbox.style.display === 'block') {
-    closeLightbox();
-  }
+// Close lightbox with ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('lightbox').style.display === 'block') {
+        closeLightbox();
+    }
 });
-
-lightboxImg.addEventListener('dragstart', (e) => {
-  e.preventDefault();
-});
-  </script>
-
+</script>
 </body>
 </html>
